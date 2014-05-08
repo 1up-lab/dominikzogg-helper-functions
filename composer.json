@@ -1,0 +1,23 @@
+{
+    "name": "dominikzogg/helper-functions",
+    "type": "library",
+    "description": "Some helper functions from daily work",
+    "keywords": ["helper functions", "functions"],
+    "license": "MIT, utf8.php is LGPLv2.1",
+    "authors": [
+        {
+            "name": "Dominik Zogg",
+            "email": "dominik.zogg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "files": [
+            "src/utf8.php",
+            "src/Dominikzogg/class_functions.php",
+            "src/Dominikzogg/string_functions.php"
+        ]
+    }
+}
