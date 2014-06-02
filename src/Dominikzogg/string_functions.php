@@ -65,3 +65,18 @@ function underscoreToCamelCase($input)
 
     return $output;
 }
+
+/**
+ * @param $input
+ * @return string
+ */
+function camelCaseToUnderscore($input)
+{
+    $output = '';
+    $inputParts = preg_split('/(?=[A-Z])/', $input);
+    foreach($inputParts as $inputPart) {
+        $output .= strtolower($inputPart) . '_';
+    }
+
+    return substr($output, 0, -1);
+}
