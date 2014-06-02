@@ -25,6 +25,36 @@ function getConstantsWithPrefix($class, $prefix)
 }
 
 /**
+ * @param object $object
+ * @return string
+ */
+function getNameAsCamelCase($object)
+{
+    $output = '';
+    $namespaceParts = explode('\\', get_class($object));
+    foreach($namespaceParts as $namespacePart) {
+        $output .= ucfirst(strtolower($namespacePart));
+    }
+
+    return $output;
+}
+
+/**
+ * @param $object
+ * @return string
+ */
+function getNameAsUnderscore($object)
+{
+    $output = '';
+    $namespaceParts = explode('\\', get_class($object));
+    foreach($namespaceParts as $namespacePart) {
+        $output .= strtolower($namespacePart) . '_';
+    }
+
+    return substr($output, 0, -1);
+}
+
+/**
  *
  * Example:
  * @ORM\Id
