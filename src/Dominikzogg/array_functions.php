@@ -1,6 +1,6 @@
 <?php
 
-namespace Dominikzogg\StringHelpers;
+namespace Dominikzogg\ArrayHelpers;
 
 /**
  * This function creates an array with the values exists on same key within both arrays
