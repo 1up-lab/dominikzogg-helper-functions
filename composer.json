@@ -16,6 +16,7 @@
     "autoload": {
         "files": [
             "src/utf8.php",
+            "src/Dominikzogg/array_functions.php",
             "src/Dominikzogg/class_functions.php",
             "src/Dominikzogg/string_functions.php"
         ]
