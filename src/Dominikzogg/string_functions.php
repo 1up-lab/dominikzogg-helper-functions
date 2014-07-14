@@ -80,3 +80,16 @@ function camelCaseToUnderscore($input)
 
     return substr($output, 0, -1);
 }
+
+/**
+ * @param int $a
+ * @param int $b
+ * @return int
+ */
+function numberCmp($a, $b)
+{
+    return strcmp(
+        sprintf('%030s', $a),
+        sprintf('%030s', $b)
+    );
+}
