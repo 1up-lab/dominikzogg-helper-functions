@@ -88,8 +88,13 @@ function camelCaseToUnderscore($input)
  */
 function numberCmp($a, $b)
 {
+    $aLength = strlen($a);
+    $bLength = strlen($b);
+
+    $length = $aLength > $bLength ? $aLength : $bLength;
+
     return strcmp(
-        sprintf('%030s', $a),
-        sprintf('%030s', $b)
+        sprintf('%0'. $length . 's', $a),
+        sprintf('%0'. $length . 's', $b)
     );
 }
