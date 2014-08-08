@@ -18,3 +18,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+Exceptions:
+utf8.php: Andreas Gohr <andi@splitbrain.org> / LGPL 2.1 (http://www.gnu.org/copyleft/lesser.html)

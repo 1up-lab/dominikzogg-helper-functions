@@ -3,11 +3,15 @@
     "type": "library",
     "description": "Some helper functions from daily work",
     "keywords": ["helper functions", "functions"],
-    "license": "MIT, utf8.php is LGPLv2.1",
+    "license": "MIT",
     "authors": [
         {
             "name": "Dominik Zogg",
             "email": "dominik.zogg@gmail.com"
+        },
+        {
+            "name": "Andreas Gohr",
+            "email": "andi@splitbrain.org"
         }
     ],
     "require": {
