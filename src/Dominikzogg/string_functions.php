@@ -82,19 +82,20 @@ function camelCaseToUnderscore($input)
 }
 
 /**
- * @param int $a
- * @param int $b
+ * @param int|float $a
+ * @param int|float $b
  * @return int
+ * @throws \Exception
  */
 function numberCmp($a, $b)
 {
-    $aLength = strlen($a);
-    $bLength = strlen($b);
+    if(!is_numeric($a) || !is_numeric($b)) {
+        throw new \Exception("Only numers are allowed!");
+    }
 
-    $length = $aLength > $bLength ? $aLength : $bLength;
+    if($a == $b) {
+        return 0;
+    }
 
-    return strcmp(
-        sprintf('%0'. $length . 's', $a),
-        sprintf('%0'. $length . 's', $b)
-    );
+    return $a > $b ? 1 : -1;
 }
