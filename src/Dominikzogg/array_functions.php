@@ -30,3 +30,19 @@ function enrich(array $array1, array $array2)
 
     return $array1;
 }
+
+/**
+ * @param array $array
+ */
+function sortBySubArrayCount(array $array)
+{
+    uasort($array, function(array $a, array $b){
+        $aCount = count($a);
+        $bCount = count($b);
+        if($aCount === $bCount) {
+            return 0;
+        }
+
+        return $aCount < $bCount ? -1 : 1;
+    });
+}
