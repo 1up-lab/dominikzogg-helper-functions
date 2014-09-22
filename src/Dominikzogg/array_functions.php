@@ -34,9 +34,9 @@ function enrich(array $array1, array $array2)
 /**
  * @param array $array
  */
-function sortBySubArrayCount(array $array)
+function sortBySubArrayCount(array &$array)
 {
-    uasort($array, function(array $a, array $b){
+    uasort($array, function(array $a, array $b) {
         $aCount = count($a);
         $bCount = count($b);
         if($aCount === $bCount) {
