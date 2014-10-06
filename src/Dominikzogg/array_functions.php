@@ -46,3 +46,16 @@ function sortBySubArrayCount(array &$array)
         return $aCount < $bCount ? -1 : 1;
     });
 }
+
+/**
+ * @param array $array
+ */
+function sortWithUmlauts(array &$array)
+{
+    uasort($array, function($a, $b) {
+        return strcmp(
+            \Dominikzogg\StringHelpers\replaceUmlauts($a),
+            \Dominikzogg\StringHelpers\replaceUmlauts($b)
+        );
+    });
+}

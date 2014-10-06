@@ -99,3 +99,27 @@ function numberCmp($a, $b)
 
     return $a > $b ? 1 : -1;
 }
+
+/**
+ * @param string $input
+ * @return string
+ */
+function replaceUmlauts($input)
+{
+    $signs = array(
+        'a' => array('á','à','â','ä'),
+        'e' => array('é','è','ê','ë'),
+        'i' => array('í','ì','î','ï'),
+        'o' => array('ó','ô','ò','ö'),
+        'u' => array('ú'.'ù'.'û','ü')
+    );
+
+    foreach($signs as $sign => $umlauts) {
+        foreach($umlauts as $umlaut) {
+            $input = str_replace($umlaut, $sign, $input);
+            $input = str_replace(strtoupper($umlaut), strtoupper($sign), $input);
+        }
+    }
+
+    return $input;
+}
