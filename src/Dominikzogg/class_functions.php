@@ -40,7 +40,7 @@ function getNameAsCamelCase($object)
 }
 
 /**
- * @param $object
+ * @param object $object
  * @return string
  */
 function getNameAsUnderscore($object)
@@ -52,6 +52,16 @@ function getNameAsUnderscore($object)
     }
 
     return substr($output, 0, -1);
+}
+
+/**
+ * @param object $object
+ * @return string
+ */
+function getSimpleName($object)
+{
+    $namespaceParts = explode('\\', get_class($object));
+    return (string) array_pop($namespaceParts);
 }
 
 /**
