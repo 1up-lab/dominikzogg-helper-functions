@@ -63,7 +63,7 @@ function underscoreToCamelCase($input)
         $output .= ucfirst(strtolower($inputPart));
     }
 
-    return $output;
+    return lcfirst($output);
 }
 
 /**
@@ -73,7 +73,7 @@ function underscoreToCamelCase($input)
 function camelCaseToUnderscore($input)
 {
     $output = '';
-    $inputParts = preg_split('/(?=[A-Z])/', $input);
+    $inputParts = preg_split('/(?=[A-Z])/', lcfirst($input));
     foreach($inputParts as $inputPart) {
         $output .= strtolower($inputPart) . '_';
     }
