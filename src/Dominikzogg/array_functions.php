@@ -19,7 +19,7 @@ function enrich(array $array1, array $array2)
         } else {
             if(array_key_exists($key, $array1)) {
                 if(!is_array($array1[$key])) {
-                    $array1[$key] = [$array1[$key]];
+                    $array1[$key] = array($array1[$key]);
                 }
                 $array1[$key][] = $value;
             } else {
