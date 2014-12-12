@@ -25,6 +25,35 @@ function getConstantsWithPrefix($class, $prefix)
 }
 
 /**
+ * @param string $class
+ * @param string $type
+ * @param string $seperator
+ * @return array
+ */
+function getContantsBasedMappings($class, $type, $seperator = '_')
+{
+    $reflection = new \ReflectionClass($class);
+    $mapping = array();
+    foreach($reflection->getConstants() as $name => $value) {
+        $nameParts = explode($seperator, $name);
+        $firstNamePart = array_shift($nameParts);
+        $lastNamePart = array_pop($nameParts);
+        if($type === $firstNamePart) {
+            $data = &$mapping;
+            foreach($nameParts as $namePart) {;
+                if(!isset($data[$namePart])) {
+                    $data[$namePart] = array();
+                }
+                $data = &$data[$namePart];
+            }
+            $data[$lastNamePart] = $value;
+        }
+    }
+
+    return $mapping;
+}
+
+/**
  * @param object $object
  * @return string
  */
