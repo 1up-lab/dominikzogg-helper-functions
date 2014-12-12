@@ -30,7 +30,7 @@ function standardize($strString)
 function shorten($string, $wishedLength, $suffix = '')
 {
     $length = strlen($string);
-    if($length <= $wishedLength) {
+    if ($length <= $wishedLength) {
         return $string;
     }
 
@@ -39,9 +39,9 @@ function shorten($string, $wishedLength, $suffix = '')
     $matches = array();
     preg_match_all('/\S+/', $string, $matches);
 
-    foreach($matches[0] as $word) {
+    foreach ($matches[0] as $word) {
         $wishedString .= $word;
-        if(strlen($wishedString) < $wishedLength) {
+        if (strlen($wishedString) < $wishedLength) {
             $wishedString .= ' ';
         } else {
             break;
@@ -59,7 +59,7 @@ function underscoreToCamelCase($input)
 {
     $output = '';
     $inputParts = explode('_', $input);
-    foreach($inputParts as $inputPart) {
+    foreach ($inputParts as $inputPart) {
         $output .= ucfirst(strtolower($inputPart));
     }
 
@@ -74,7 +74,7 @@ function camelCaseToUnderscore($input)
 {
     $output = '';
     $inputParts = preg_split('/(?=[A-Z])/', lcfirst($input));
-    foreach($inputParts as $inputPart) {
+    foreach ($inputParts as $inputPart) {
         $output .= strtolower($inputPart) . '_';
     }
 
@@ -89,11 +89,11 @@ function camelCaseToUnderscore($input)
  */
 function numberCmp($a, $b)
 {
-    if(!is_numeric($a) || !is_numeric($b)) {
+    if (!is_numeric($a) || !is_numeric($b)) {
         throw new \Exception("Only numers are allowed!");
     }
 
-    if($a == $b) {
+    if ($a == $b) {
         return 0;
     }
 
@@ -114,8 +114,8 @@ function replaceUmlauts($input)
         'u' => array('ú'.'ù'.'û','ü')
     );
 
-    foreach($signs as $sign => $umlauts) {
-        foreach($umlauts as $umlaut) {
+    foreach ($signs as $sign => $umlauts) {
+        foreach ($umlauts as $umlaut) {
             $input = str_replace($umlaut, $sign, $input);
             $input = str_replace(strtoupper($umlaut), strtoupper($sign), $input);
         }

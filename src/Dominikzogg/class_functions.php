@@ -14,8 +14,8 @@ function getConstantsWithPrefix($class, $prefix)
 
     $constants = array();
 
-    foreach($reflection->getConstants() as $name => $value){
-        if(substr($name, 0, $prefixLength) != $prefix){
+    foreach ($reflection->getConstants() as $name => $value) {
+        if (substr($name, 0, $prefixLength) != $prefix) {
             continue;
         }
         $constants[$value] = $name;
@@ -34,14 +34,14 @@ function getContantsBasedMappings($class, $type, $seperator = '_')
 {
     $reflection = new \ReflectionClass($class);
     $mapping = array();
-    foreach($reflection->getConstants() as $name => $value) {
+    foreach ($reflection->getConstants() as $name => $value) {
         $nameParts = explode($seperator, $name);
         $firstNamePart = array_shift($nameParts);
         $lastNamePart = array_pop($nameParts);
-        if($type === $firstNamePart) {
+        if ($type === $firstNamePart) {
             $data = &$mapping;
-            foreach($nameParts as $namePart) {;
-                if(!isset($data[$namePart])) {
+            foreach ($nameParts as $namePart) {
+                if (!isset($data[$namePart])) {
                     $data[$namePart] = array();
                 }
                 $data = &$data[$namePart];
@@ -61,7 +61,7 @@ function getNameAsCamelCase($object)
 {
     $output = '';
     $namespaceParts = explode('\\', get_class($object));
-    foreach($namespaceParts as $namespacePart) {
+    foreach ($namespaceParts as $namespacePart) {
         $output .= ucfirst(strtolower($namespacePart));
     }
 
@@ -76,7 +76,7 @@ function getNameAsUnderscore($object)
 {
     $output = '';
     $namespaceParts = explode('\\', get_class($object));
-    foreach($namespaceParts as $namespacePart) {
+    foreach ($namespaceParts as $namespacePart) {
         $output .= strtolower($namespacePart) . '_';
     }
 
