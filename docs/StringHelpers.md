@@ -20,8 +20,9 @@ echo \Dominikzogg\StringHelpers\standardize('Dies ist eine Übung');
 
 #### result
 
+```
 dies-ist-eine-ubung
-
+```
 
 ## shorten
 
@@ -45,4 +46,6 @@ echo \Dominikzogg\StringHelpers\shorten('Dies ist eine Übung', 10, '...');
 
 #### result
 
+```
 Dies ist eine...
+```
