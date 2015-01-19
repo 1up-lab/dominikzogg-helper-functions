@@ -64,7 +64,7 @@ class StringFunctionTest extends \PHPUnit_Framework_TestCase
             ),
             array(
                 'DiesIstEinTest',
-                'DiesIstEinTest'
+                'diesIstEinTest'
             ),
             array(
                 'dies_ist_ein_test',
@@ -72,7 +72,7 @@ class StringFunctionTest extends \PHPUnit_Framework_TestCase
             ),
             array(
                 'Dies_Ist_Ein_Test',
-                'DiesIstEinTest'
+                'diesIstEinTest'
             )
         );
     }
@@ -95,19 +95,19 @@ class StringFunctionTest extends \PHPUnit_Framework_TestCase
         return array(
             array(
                 'dies_Ist_Ein_Test',
-                'dies_Ist_Ein_Test',
+                'dies_ist_ein_test',
             ),
             array(
                 'Dies_Ist_Ein_Test',
-                'Dies_Ist_Ein_Test',
+                'dies_ist_ein_test',
             ),
             array(
                 'diesIstEinTest',
-                'dies_Ist_Ein_Test',
+                'dies_ist_ein_test',
             ),
             array(
                 'DiesIstEinTest',
-                'Dies_Ist_Ein_Test',
+                'dies_ist_ein_test',
             )
         );
     }

@@ -59,11 +59,17 @@ function underscoreToCamelCase($input)
 {
     $output = '';
     $inputParts = explode('_', $input);
+
+    if(1 === count($inputParts)) {
+        return lcfirst($input);
+    }
+
     foreach ($inputParts as $i => $inputPart) {
+        $inputPart = strtolower($inputPart);
         if (0 !== $i) {
             $output .= ucfirst($inputPart);
         } else {
-            $output .= $inputPart;
+            $output .= lcfirst($inputPart);
         }
     }
 
@@ -84,7 +90,7 @@ function camelCaseToUnderscore($input)
         }
     }
 
-    return substr($output, 0, -1);
+    return strtolower(substr($output, 0, -1));
 }
 
 /**
