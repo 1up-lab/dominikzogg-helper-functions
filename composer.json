@@ -8,18 +8,14 @@
         {
             "name": "Dominik Zogg",
             "email": "dominik.zogg@gmail.com"
-        },
-        {
-            "name": "Andreas Gohr",
-            "email": "andi@splitbrain.org"
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "phpunit/phpunit": "~4.0"
     },
     "autoload": {
         "files": [
-            "src/utf8.php",
             "src/Dominikzogg/array_functions.php",
             "src/Dominikzogg/class_functions.php",
             "src/Dominikzogg/debuging_functions.php",

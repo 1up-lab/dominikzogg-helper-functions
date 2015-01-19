@@ -14,7 +14,7 @@ function standardize($strString)
     $arrReplace = array('', '-', '-');
 
     $strString = \html_entity_decode($strString, ENT_QUOTES, 'utf-8');
-    $strString = \utf8_romanize($strString);
+    $strString = replaceUmlauts($strString);
     $strString = \preg_replace($arrSearch, $arrReplace, $strString);
     $strString = \strtolower($strString);
 
@@ -60,7 +60,7 @@ function underscoreToCamelCase($input)
     $output = '';
     $inputParts = explode('_', $input);
     foreach ($inputParts as $i => $inputPart) {
-        if(0 !== $i) {
+        if (0 !== $i) {
             $output .= ucfirst($inputPart);
         } else {
             $output .= $inputPart;
@@ -77,9 +77,11 @@ function underscoreToCamelCase($input)
 function camelCaseToUnderscore($input)
 {
     $output = '';
-    $inputParts = preg_split('/(?=[A-Z])/', lcfirst($input));
+    $inputParts = preg_split('/(?=[A-Z])/', $input);
     foreach ($inputParts as $inputPart) {
-        $output .= strtolower($inputPart) . '_';
+        if ('' !== $inputPart) {
+            $output .= rtrim($inputPart . '_', '_') . '_';
+        }
     }
 
     return substr($output, 0, -1);
@@ -89,12 +91,16 @@ function camelCaseToUnderscore($input)
  * @param int|float $a
  * @param int|float $b
  * @return int
- * @throws \Exception
+ * @throws \InvalidArgumentException
  */
 function numberCmp($a, $b)
 {
-    if (!is_numeric($a) || !is_numeric($b)) {
-        throw new \Exception("Only numers are allowed!");
+    if (!is_numeric($a)) {
+        throw new \InvalidArgumentException('A is not a number!');
+    }
+
+    if (!is_numeric($b)) {
+        throw new \InvalidArgumentException('B is not a number!');
     }
 
     if ($a == $b) {
@@ -111,17 +117,33 @@ function numberCmp($a, $b)
 function replaceUmlauts($input)
 {
     $signs = array(
-        'a' => array('á','à','â','ä'),
-        'e' => array('é','è','ê','ë'),
-        'i' => array('í','ì','î','ï'),
-        'o' => array('ó','ô','ò','ö'),
-        'u' => array('ú'.'ù'.'û','ü')
+        'A' => array('À','Á','Â','Ã','Ä','Å','Æ'),
+        'C' => array('Ç'),
+        'D' => array('Ð'),
+        'E' => array('È','É','Ê','Ë'),
+        'I' => array('Ì','Í','Î','Ï'),
+        'N' => array('Ñ'),
+        'O' => array('Ò','Ó','Ô','Õ','Ö'),
+        'TH' => array('Þ'),
+        'U' => array('Ù','Ú','Û','Ü'),
+        'Y' => array('Ý'),
+
+        'a' => array('à','á','â','ã','ä','å','æ'),
+        'c' => array('ç'),
+        'd' => array('ð'),
+        'e' => array('è','é','ê','ë'),
+        'i' => array('ì','í','î','ï'),
+        'n' => array('ñ'),
+        'o' => array('ò','ó','ô','õ','ö'),
+        'ss' => array('ß'),
+        'th' => array('þ'),
+        'u' => array('ù','ú','û','ü'),
+        'y' => array('ý','ÿ'),
     );
 
     foreach ($signs as $sign => $umlauts) {
         foreach ($umlauts as $umlaut) {
             $input = str_replace($umlaut, $sign, $input);
-            $input = str_replace(strtoupper($umlaut), strtoupper($sign), $input);
         }
     }
 
