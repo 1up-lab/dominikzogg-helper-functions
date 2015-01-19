@@ -59,11 +59,15 @@ function underscoreToCamelCase($input)
 {
     $output = '';
     $inputParts = explode('_', $input);
-    foreach ($inputParts as $inputPart) {
-        $output .= ucfirst(strtolower($inputPart));
+    foreach ($inputParts as $i => $inputPart) {
+        if(0 !== $i) {
+            $output .= ucfirst($inputPart);
+        } else {
+            $output .= $inputPart;
+        }
     }
 
-    return lcfirst($output);
+    return $output;
 }
 
 /**
