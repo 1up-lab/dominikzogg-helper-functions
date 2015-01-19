@@ -3,22 +3,20 @@
 namespace Dominikzogg\StringHelpers;
 
 /**
- * Standardize a parameter (strip special characters and convert spaces)
- * @param string
- * @param boolean
+ * @param string $string
  * @return string
  */
-function standardize($strString)
+function standardize($string)
 {
-    $arrSearch = array('/[^a-zA-Z0-9 _-]+/', '/ +/', '/\-+/');
-    $arrReplace = array('', '-', '-');
+    $search = array('/[^a-zA-Z0-9 _-]+/', '/ +/', '/\-+/');
+    $replace = array('', '-', '-');
 
-    $strString = \html_entity_decode($strString, ENT_QUOTES, 'utf-8');
-    $strString = replaceUmlauts($strString);
-    $strString = \preg_replace($arrSearch, $arrReplace, $strString);
-    $strString = \strtolower($strString);
+    $string = \html_entity_decode($string, ENT_QUOTES, 'utf-8');
+    $string = replaceUmlauts($string);
+    $string = \preg_replace($search, $replace, $string);
+    $string = \strtolower($string);
 
-    return \trim($strString, '-');
+    return \trim($string, '-');
 }
 
 /**
