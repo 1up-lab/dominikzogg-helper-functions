@@ -12,10 +12,16 @@ This function is made for alias/slug generation.
 function standardize($string)
 ```
 
+#### call sample
+
 ```{.php}
 echo \Dominikzogg\StringHelpers\standardize('Dies ist eine Übung');
-// dies-ist-eine-ubung
 ```
+
+#### result
+
+dies-ist-eine-ubung
+
 
 ## shorten
 
@@ -31,7 +37,12 @@ This function is to shorten a string to a wished length, by keep full words
 function shorten($string, $wishedLength, $suffix = '')
 ```
 
+#### call sample
+
 ```{.php}
 echo \Dominikzogg\StringHelpers\shorten('Dies ist eine Übung', 10, '...');
-// Dies ist eine...
 ```
+
+#### result
+
+Dies ist eine...
