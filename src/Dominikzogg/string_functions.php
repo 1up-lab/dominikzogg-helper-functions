@@ -50,19 +50,19 @@ function shorten($string, $wishedLength, $suffix = '')
 }
 
 /**
- * @param $input
+ * @param string $string
  * @return string
  */
-function underscoreToCamelCase($input)
+function underscoreToCamelCase($string)
 {
-    $output = '';
-    $inputParts = explode('_', $input);
+    $stringParts = explode('_', $string);
 
-    if(1 === count($inputParts)) {
-        return lcfirst($input);
+    if(1 === count($stringParts)) {
+        return lcfirst($string);
     }
 
-    foreach ($inputParts as $i => $inputPart) {
+    $output = '';
+    foreach ($stringParts as $i => $inputPart) {
         $inputPart = strtolower($inputPart);
         if (0 !== $i) {
             $output .= ucfirst($inputPart);
@@ -75,14 +75,14 @@ function underscoreToCamelCase($input)
 }
 
 /**
- * @param $input
+ * @param string $string
  * @return string
  */
-function camelCaseToUnderscore($input)
+function camelCaseToUnderscore($string)
 {
     $output = '';
-    $inputParts = preg_split('/(?=[A-Z])/', $input);
-    foreach ($inputParts as $inputPart) {
+    $stringParts = preg_split('/(?=[A-Z])/', $string);
+    foreach ($stringParts as $inputPart) {
         if ('' !== $inputPart) {
             $output .= rtrim($inputPart . '_', '_') . '_';
         }

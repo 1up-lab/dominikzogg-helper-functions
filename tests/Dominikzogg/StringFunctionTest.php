@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Dominikzogg;
+namespace Tests\Dominikzogg;
 
 class StringFunctionTest extends \PHPUnit_Framework_TestCase
 {
@@ -110,44 +110,6 @@ class StringFunctionTest extends \PHPUnit_Framework_TestCase
                 'dies_ist_ein_test',
             )
         );
-    }
-
-    /**
-     * @param int $a
-     * @paran int $b
-     * @param int $expect
-     * @dataProvider numberCmpProvider
-     */
-    public function testNumberCmp($a, $b, $expect)
-    {
-        $this->assertEquals($expect, \Dominikzogg\StringHelpers\numberCmp($a, $b));
-    }
-
-    /**
-     * @return array
-     */
-    public function numberCmpProvider()
-    {
-        return array(
-            array(1, 1, 0),
-            array(1, 2, -1),
-            array(2, 1, 1),
-            array(INF, INF, 0)
-        );
-    }
-
-    public function testNumberCmpExceptionAIsNotANumber()
-    {
-        $this->setExpectedException('\InvalidArgumentException', 'A is not a number!');
-
-        \Dominikzogg\StringHelpers\numberCmp('test', 0);
-    }
-
-    public function testNumberCmpExceptionBIsNotANumber()
-    {
-        $this->setExpectedException('\InvalidArgumentException', 'B is not a number!');
-
-        \Dominikzogg\StringHelpers\numberCmp(0, 'test');
     }
 
     public function testReplaceUmlauts()

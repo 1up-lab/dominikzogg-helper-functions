@@ -8,6 +8,8 @@
 ## helpers
 
  * [StringHelpers][1]
+ * [NumericHelpers][2]
 
 
 [1]: docs/StringHelpers.md
+[2]: docs/NumericHelpers.md

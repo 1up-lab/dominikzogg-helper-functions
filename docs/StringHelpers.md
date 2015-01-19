@@ -49,3 +49,75 @@ echo \Dominikzogg\StringHelpers\shorten('Dies ist eine Übung', 10, '...');
 ```
 Dies ist eine...
 ```
+
+## underscoreToCamelCase
+
+This function converts a underscore string into a camel case ones
+
+```{.php}
+/**
+ * @param string $string
+ * @return string
+ */
+function underscoreToCamelCase($string)
+```
+
+#### call sample
+
+```{.php}
+echo \Dominikzogg\StringHelpers\underscoreToCamelCase('dies_ist_ein_test');
+```
+
+#### result
+
+```
+diesIstEinTest
+```
+
+## underscoreToCamelCase
+
+This function converts a camel case string into a underscore ones
+
+```{.php}
+/**
+ * @param string $string
+ * @return string
+ */
+function camelCaseToUnderscore($string)
+```
+
+#### call sample
+
+```{.php}
+echo \Dominikzogg\StringHelpers\camelCaseToUnderscore('diesIstEinTest');
+```
+
+#### result
+
+```
+dies_ist_ein_test
+```
+
+## replaceUmlauts
+
+This function replaces umlauts with their base letter
+
+```{.php}
+/**
+ * @param string $string
+ * @return string
+ */
+function camelCaseToUnderscore($string)
+```
+
+#### call sample
+
+```{.php}
+echo \Dominikzogg\StringHelpers\replaceUmlauts('Dies ist eine Übung');
+```
+
+#### result
+
+```
+Dies ist eine Ubung
+```
