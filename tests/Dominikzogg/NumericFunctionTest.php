@@ -24,7 +24,9 @@ class NumericFunctionTest extends \PHPUnit_Framework_TestCase
             array(1, 1, 0),
             array(1, 2, -1),
             array(2, 1, 1),
-            array(INF, INF, 0)
+            array('1', 1, 0),
+            array('1', '1.0', 0),
+            array(1, 1.0, 0)
         );
     }
 
