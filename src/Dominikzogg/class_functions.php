@@ -25,6 +25,52 @@ function getConstantsWithPrefix($class, $prefix)
 }
 
 /**
+ * @param string|object $class
+ * @param string $prefix
+ * @return array
+ * @throws \Exception
+ */
+function getConstantsWithPrefixForChoices($class, $prefix)
+{
+    $reflection = new \ReflectionClass($class);
+    $labelPrefixConstantName = 'LABELPREFIX_' . rtrim($prefix, '_');
+
+    if(!$reflection->hasConstant($labelPrefixConstantName)) {
+        throw new \Exception(sprintf('A constant with name: %s is needed as labelprefix', $labelPrefixConstantName));
+    }
+
+    $labelPrefix = $reflection->getConstant($labelPrefixConstantName);
+
+    $constantsWithPrefix = getConstantsWithPrefix($class, $prefix);
+
+    foreach($constantsWithPrefix as $value => $constantWithPrefix) {
+        $constantsWithPrefix[$value] = $labelPrefix . $value;
+    }
+
+    return $constantsWithPrefix;
+}
+
+/**
+ * @param string|object $class
+ * @param string $prefix
+ * @return array
+ * @throws \Exception
+ */
+function getConstantWithPrefixForChoice($class, $prefix, $value)
+{
+    $reflection = new \ReflectionClass($class);
+    $labelPrefixConstantName = 'LABELPREFIX_' . rtrim($prefix, '_');
+
+    if(!$reflection->hasConstant($labelPrefixConstantName)) {
+        throw new \Exception(sprintf('A constant with name: %s is needed as labelprefix', $labelPrefixConstantName));
+    }
+
+    $labelPrefix = $reflection->getConstant($labelPrefixConstantName);
+
+    return $labelPrefix . $value;
+}
+
+/**
  * @param string $class
  * @param string $type
  * @param string $seperator
