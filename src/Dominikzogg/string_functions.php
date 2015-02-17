@@ -71,18 +71,22 @@ function underscoreToCamelCase($input)
 }
 
 /**
- * @param $input
+ * @param string $input
  * @return string
  */
 function camelCaseToUnderscore($input)
 {
     $output = '';
-    $inputParts = preg_split('/(?=[A-Z])/', lcfirst($input));
-    foreach ($inputParts as $inputPart) {
-        $output .= strtolower($inputPart) . '_';
+    $outputParts = preg_split('/(?=[\p{Lu}])/', $input);
+    foreach ($outputParts as $outputPart) {
+        if ($outputPart) {
+            $output .= rtrim($outputPart, '_') . '_';
+        }
     }
 
-    return substr($output, 0, -1);
+    $output = mb_strtolower(rtrim($output, '_'));
+
+    return $output;
 }
 
 /**
