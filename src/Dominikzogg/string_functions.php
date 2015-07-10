@@ -130,3 +130,29 @@ function replaceUmlauts($input)
 
     return $input;
 }
+
+/**
+ * @param string $hexEspacedUnicode
+ * @return string
+ */
+function covertHexEscapedUnicodeToUnicode($hexEspacedUnicode)
+{
+    static $mapping;
+
+    if(null === $mapping) {
+        $mapping = array();
+    }
+
+    if(!isset($mapping[$hexEspacedUnicode])) {
+        $unicodePrefix = substr($hexEspacedUnicode, 0, 2);
+        $hexNumber = substr($hexEspacedUnicode, 2);
+
+        if($unicodePrefix !== '\\u' || preg_match('/[0-9a-f]{1,4}/', $hexNumber) !== 1) {
+            throw new \InvalidArgumentException(sprintf('Input %s is not \u0000 like!', $hexEspacedUnicode));
+        }
+
+        $mapping[$hexEspacedUnicode] = mb_convert_encoding(pack('H*', $hexNumber), 'UTF-8', 'UCS-2BE');
+    }
+
+    return $mapping[$hexEspacedUnicode];
+}
